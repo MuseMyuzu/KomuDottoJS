@@ -10,6 +10,7 @@ class TextController{
     static initialize(){
         this.text = "コムドット"
         this.textElement = document.getElementById("text");
+        this.textElement.style.position = "absolute";
         this.textElement.style.top = 0;
         this.changedFlag = [false, false, false, false];
         this.lap = 0;
@@ -90,7 +91,6 @@ class TextController{
             this.y += Config.YSPEED;
         }
 
-        this.textElement.style.top = this.y;
-        console.log("y="+this.y);
+        this.textElement.style.top = this.y + "px";
     }
 }
