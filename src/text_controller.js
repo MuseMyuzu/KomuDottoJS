@@ -91,5 +91,6 @@ class TextController{
         }
 
         this.textElement.style.top = this.y;
+        console.log("y="+this.y);
     }
 }

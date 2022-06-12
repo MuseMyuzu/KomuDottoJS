@@ -2,7 +2,7 @@
 class Field{
 
     static initialize(){
-        this.draw();
+        
     }
 
     static draw(){
