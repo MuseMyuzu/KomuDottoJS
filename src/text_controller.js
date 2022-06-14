@@ -1,6 +1,6 @@
 class TextController{
     //流れてくる文字を5つに分けたもの
-    static textList;
+    static textList = ["", "", "", "", ""];
     //html上でのテキストエレメント
     static textElement;
     //i番目の文字のdiff

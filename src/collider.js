@@ -11,8 +11,8 @@ class Collider{
     //テキストと人がぶつかったかどうか。
     //ぶつかったらtrueを返す
     static checkCollision(){
-        const w_text
-        const h_text
+        const w_text = this.textElement.style.clientWidth;
+        const h_text = this.textElement.style.clientHeight;
         //テキストの右端のx座標
         const x_text = this.textElement.style.left + w_text/2;
         //テキストの下端のy座標
