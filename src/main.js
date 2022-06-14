@@ -1,46 +1,44 @@
-//起動されたときに呼ばれる
+//起動時
 window.addEventListener("load", () => {
-    initialize();
-
-    loop();
+    //ボタン等を表示
+    Main.initialize();
 })
 
-let frame;
-let mode;
+class Main{
+    static mode;
 
-function initialize(){
-    //フィールドを描く
-    Field.initialize();
+    static initialize(){
 
-    //ボタンを描く
-    Start.initialize();
-    
-    //テキストを描く
-    TextController.initialize();
+        Start.initialize();
 
-    frame = 0;
-    mode = 0;
-}
+        this.mode = 0;
 
-
-
-function loop(){
-    switch(mode){
-        case 0: 
-        //スタートの処理
-            mode = 1; 
-            break;
-        case 1: 
-            const flag = TextController.update();
-            if(flag == true) mode = 2;
-            break;
-        case 2: 
-            //クリアの処理
-            break;
+        this.loop();
     }
-    
 
-    frame++;
-    //1/60秒後にもう一度呼び出す
-    requestAnimationFrame(loop);
+
+
+    static loop(){
+        switch(Main.mode){
+            case 0: 
+                //スタートの処理
+                break;
+            case 1: 
+                const flag = TextController.update();
+                if(flag == true) Main.mode = 2;
+
+                if(Collider.checkCollision()){
+                    //ぶつかった
+                    Main.mode = 2;
+                }
+                break;
+            case 2: 
+                //クリアの処理
+                break;
+        }
+        
+        //1/60秒後にもう一度呼び出す
+        requestAnimationFrame(Main.loop);
+    }
 }
+

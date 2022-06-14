@@ -1,36 +1,44 @@
 class TextController{
+    //流れてくる文字を5つに分けたもの
     static textList;
+    //html上でのテキストエレメント
     static textElement;
+    //i番目の文字のdiff
     static diffList = [];
+    //diffListの値の合計
     static sumDiff;
-    static lap;
     //テキストのy座標
     static y;
-    //テキストのフォントサイズ
-    static fontSize;
     //テキストがy方向に進む速さ
     static ySpeed;
     //似ていないひらがな
     static dissimilarTexts = ["ア", "イ", "ウ", "エ", "オ"];
 
     static initialize(){
-        this.textList = ["ア", "イ", "ウ", "エ", "オ"];
+        //ランダムなテキストリストを作成
+        this.makeRandomText();
         this.textElement = document.getElementById("text");
         this.textElement.style.position = "absolute";
         this.textElement.style.top = Config.START_Y;
-        this.textElement.style.fontSize = "0px";
+        this.textElement.style.fontSize = Config.FONT_SIZE + "px";
 
         this.diffList = [2, 1, 2, 2, 2];
         this.sumDiff = this.diffList.reduce((sum, element) => sum + element, 0);
         this.lap = 0;
         this.y = Config.START_Y;
-        this.fontSize = 0;
-        this.ySpeed = 2.0;
+        this.ySpeed = 3.0;
     }
 
     //0 - max-1 までの整数の乱数を発生
     static getRandomInt(max) {
         return Math.floor(Math.random() * max);
+    }
+
+    static makeRandomText(){
+        for(let i=0; i<5; i++){
+            const r = this.getRandomInt(this.dissimilarTexts.length);
+            this.textList[i] = this.dissimilarTexts[r];
+        }
     }
 
     //i番目の文字を一回変化
@@ -102,8 +110,8 @@ class TextController{
         if(this.y > Config.FIELD_Y ) {
             //上に戻して周回数を1増やす
             this.y = Config.START_Y;
-            this.fontSize = 0;
-            this.lap++;
+            //ちょっと速くする
+            this.ySpeed += 0.5;
 
             if(Math.random() > Config.CHANGE_PROB){
                 //コムドットが流れる
@@ -119,12 +127,9 @@ class TextController{
         else{
             //下方向に動かす
             this.y += this.ySpeed;
-            this.fontSize 
-                += Config.FONT_SIZE * this.ySpeed/(Config.FIELD_Y - Config.START_Y);
         }
 
         this.textElement.style.top = this.y + "px";
-        this.textElement.style.fontSize = this.fontSize + "px";
 
         return false;
     }
