@@ -19,8 +19,10 @@ class TextController{
         this.makeRandomText();
         this.textElement = document.getElementById("text");
         this.textElement.style.position = "absolute";
-        this.textElement.style.top = Config.START_Y;
+        this.textElement.style.top = Config.START_Y + "px";
         this.textElement.style.fontSize = Config.FONT_SIZE + "px";
+        this.textElement.style.fontFamily = Config.FONT_FAMILY;
+        this.textElement.style.textStroke = Config.STROKE_PX + "px " + Config.STROKE_COLOR;
 
         this.diffList = [2, 1, 2, 2, 2];
         this.sumDiff = this.diffList.reduce((sum, element) => sum + element, 0);

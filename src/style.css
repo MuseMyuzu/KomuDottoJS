@@ -9,10 +9,8 @@
     height: 600px;
     object-fit: cover;
 }
-span{
-    position: absolute;
-}
 #text{
+    position: absolute;
     top: 0px;
     left: 50%;
     transform: translate(-50%, -50%);

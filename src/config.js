@@ -11,8 +11,14 @@ Config.FIELD_X = 600;
 
 //文字が出現するy座標
 Config.START_Y = 0;
-//最大のフォントサイズ
-Config.FONT_SIZE = 60;
+//フォントサイズ
+Config.FONT_SIZE = 100;
+//フォント
+Config.FONT_FAMILY = "Otomanopee One";
+//縁取りの太さ
+Config.STROKE_PX = 20;
+//縁取りの色
+Config.STROKE_COLOR = "#000000";
 
 //右側の人のleft
 Config.PEOPLE2_LEFT = Config.FIELD_X*0.5;
