@@ -20,10 +20,12 @@ Config.STROKE_PX = 20;
 //縁取りの色
 Config.STROKE_COLOR = "#000000";
 
-//右側の人のleft
-Config.PEOPLE2_LEFT = Config.FIELD_X*0.5;
+//右側の人のleftの初期値
+Config.LEFT_MIN = Config.FIELD_X*0.5;
 //右側の人のtop
-Config.PEOPLE2_TOP = 300;
+Config.PEOPLE2_TOP = Config.FIELD_Y*0.5;
+//右側の人のleftの上限
+Config.LEFT_MAX = Config.FIELD_X*0.8;
 
 //文字がコムドット以外になる確率
 Config.CHANGE_PROB = 0.5;

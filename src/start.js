@@ -1,6 +1,7 @@
 class Start{
     static initialize(){
 
+        //スタートボタンの作成
         const startButton = document.createElement("button");
         startButton.type = "button";
         startButton.innerHTML = "スタート";
@@ -10,6 +11,7 @@ class Start{
         startButton.style.width = "300px";
         startButton.style.fontSize = "48px";
 
+        //スタートボタンが押されたとき
         startButton.addEventListener("click",
         function(){
 
@@ -25,7 +27,8 @@ class Start{
             //コライダーを初期化
             Collider.initialize();
 
-            Main.mode = 1;
+            //衝突チェックからスタート
+            Main.mode = "collision";
         })
 
         const div = document.getElementById("buttonDiv");

@@ -7,12 +7,15 @@ window.addEventListener("load", () => {
 class Main{
     static mode;
 
+    //起動時に呼ばれる初期化関数
     static initialize(){
 
+        //スタート画面を初期化
         Start.initialize();
 
-        this.mode = 0;
-
+        this.mode = "start";
+        
+        //ループを開始
         this.loop();
     }
 
@@ -20,19 +23,34 @@ class Main{
 
     static loop(){
         switch(Main.mode){
-            case 0: 
+            case "start": 
                 //スタートの処理
                 break;
-            case 1: 
-                const flag = TextController.update();
-                if(flag == true) Main.mode = 2;
-
-                if(Collider.checkCollision()){
-                    //ぶつかった
-                    Main.mode = 2;
-                }
+            case "collision": 
+                //衝突判定。ぶつかったらtrueが返る
+                const collisioin = Collider.checkCollision();
+                Main.mode = "moveText";
                 break;
-            case 2: 
+            case "moveText":
+                //テキストを動かす
+                const flag = TextController.update();
+                if(flag == true) Main.mode = "clear";
+                Main.mode = "movePeople";
+                break;
+            case "movePeople":
+                console.log(PeopleController.isTouch);
+                //人画像を動かす
+                if(PeopleController.isTouch){
+                    //タッチしているとき
+                    PeopleController.movePeople();
+                }
+                else{
+                    //タッチしていないとき
+                    PeopleController.returnPeople();
+                }
+                Main.mode = "collision";
+                break;
+            case "clear": 
                 //クリアの処理
                 break;
         }

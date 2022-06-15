@@ -19,6 +19,7 @@ class TextController{
         this.makeRandomText();
         this.textElement = document.getElementById("text");
         this.textElement.style.position = "absolute";
+        this.textElement.style.left = "50%";
         this.textElement.style.top = Config.START_Y + "px";
         this.textElement.style.fontSize = Config.FONT_SIZE + "px";
         this.textElement.style.fontFamily = Config.FONT_FAMILY;
