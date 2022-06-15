@@ -33,20 +33,30 @@ class PeopleController{
         const road = document.getElementById("road");
 
         //画像をタッチしたらisTouchをtrue
-        road.addEventListener("touchstart" , function() {
-            console.log("touchstart");
-            this.isTouch = true;
+        road.addEventListener(this.getEventTypeStart() , function() {
+            console.log("mousedown");
+            PeopleController.isTouch = true;
         });
 
         //タッチを辞めたらisTouchをfalse
-        road.addEventListener("touchend", function() {
-            this.isTouch = false;
+        road.addEventListener(this.getEventTypeEnd() , function() {
+            console.log("mouseup");
+            PeopleController.isTouch = false;
         });
+    }
+
+    //スマホかPCかで変更する
+    static getEventTypeStart(){
+        return window.ontouchstart ? "touchstart" : "mousedown";
+    }
+
+    static getEventTypeEnd(){
+        return window.ontouchstart ? "touchend" : "mouseup";
     }
 
     //タッチしている間、人を動かす
     static movePeople(){
-        const left = parseInt(this.people2.style.left);
+        let left = parseInt(this.people2.style.left);
         if(left < Config.LEFT_MAX){
             left += 5.0;
         }
@@ -55,7 +65,7 @@ class PeopleController{
 
     //タッチしてないとき、人を戻す
     static returnPeople(){
-        const left = parseInt(this.people2.style.left);
+        let left = parseInt(this.people2.style.left);
         if(Config.LEFT_MIN < left){
             left -= 5.0;
         }

@@ -5,6 +5,7 @@ class Start{
         const startButton = document.createElement("button");
         startButton.type = "button";
         startButton.innerHTML = "スタート";
+        startButton.style.fontFamily = Config.FONT_FAMILY;
         startButton.style.color = "#fff";
         startButton.style.background = "#f56500";
         startButton.style.borderRadius = "100vh";

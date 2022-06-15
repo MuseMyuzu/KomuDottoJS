@@ -11,6 +11,9 @@ Config.FIELD_X = 600;
 
 //文字が出現するy座標
 Config.START_Y = 0;
+//文字のy方向の初速度
+Config.START_YSPEED = 3.0;
+
 //フォントサイズ
 Config.FONT_SIZE = 100;
 //フォント

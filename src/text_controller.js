@@ -29,7 +29,7 @@ class TextController{
         this.sumDiff = this.diffList.reduce((sum, element) => sum + element, 0);
         this.lap = 0;
         this.y = Config.START_Y;
-        this.ySpeed = 3.0;
+        this.ySpeed = Config.START_YSPEED;
     }
 
     //0 - max-1 までの整数の乱数を発生
