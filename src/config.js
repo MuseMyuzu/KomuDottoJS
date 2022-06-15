@@ -19,10 +19,12 @@ Config.FONT_SIZE = 100;
 //フォント
 Config.FONT_FAMILY = "Otomanopee One";
 //縁取りの太さ
-Config.STROKE_PX = 20;
+Config.STROKE_PX = 5;
 //縁取りの色
 Config.STROKE_COLOR = "#000000";
 
+//人の画像の幅
+Config.PEOPLE_WIDTH = 150;
 //右側の人のleftの初期値
 Config.LEFT_MIN = Config.FIELD_X*0.5;
 //右側の人のtop

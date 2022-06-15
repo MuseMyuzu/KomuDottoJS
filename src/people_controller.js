@@ -10,7 +10,7 @@ class PeopleController{
         this.people1 = document.createElement("img");
         this.people1.src = "img/people.png";
         this.people1.style.position = "absolute";
-        this.people1.style.width = "200px";
+        this.people1.style.width = Config.PEOPLE_WIDTH + "px";
         this.people1.style.top = Config.PEOPLE2_TOP + "px";
         this.people1.style.left = (Config.FIELD_X - Config.LEFT_MIN) + "px";
         //左に100%動かす（座標の基準が画像の右上になる）
@@ -20,7 +20,7 @@ class PeopleController{
         this.people2 = document.createElement("img");
         this.people2.src = "img/people.png";
         this.people2.style.position = "absolute";
-        this.people2.style.width = "200px";
+        this.people2.style.width = Config.PEOPLE_WIDTH + "px";
         this.people2.style.top = Config.PEOPLE2_TOP + "px";
         this.people2.style.left = Config.LEFT_MIN + "px";
 
@@ -30,16 +30,16 @@ class PeopleController{
         div.appendChild(this.people2);
 
         //背景をクリックしたときの操作
-        const road = document.getElementById("road");
+        const clikArea = document.body;
 
         //画像をタッチしたらisTouchをtrue
-        road.addEventListener(this.getEventTypeStart() , function() {
+        clikArea.addEventListener(this.getEventTypeStart() , function() {
             console.log("mousedown");
             PeopleController.isTouch = true;
         });
 
         //タッチを辞めたらisTouchをfalse
-        road.addEventListener(this.getEventTypeEnd() , function() {
+        clikArea.addEventListener(this.getEventTypeEnd() , function() {
             console.log("mouseup");
             PeopleController.isTouch = false;
         });
@@ -56,10 +56,19 @@ class PeopleController{
 
     //タッチしている間、人を動かす
     static movePeople(){
+        //右の人のleftを取得
         let left = parseInt(this.people2.style.left);
+        //右端に着くまで
         if(left < Config.LEFT_MAX){
+            //右へ動かす
             left += 5.0;
         }
+        else{
+            //端まで行ったらMAXの値を代入
+            left = Config.LEFT_MAX;
+        }
+        //画像のleftに反映
+        this.people1.style.left = (Config.FIELD_X - left) + "px";
         this.people2.style.left = left + "px";
     }
 
@@ -69,6 +78,10 @@ class PeopleController{
         if(Config.LEFT_MIN < left){
             left -= 5.0;
         }
+        else{
+            left = Config.LEFT_MIN;
+        }
+        this.people1.style.left = (Config.FIELD_X - left) + "px";
         this.people2.style.left = left + "px";
     }
 }

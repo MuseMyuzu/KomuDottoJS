@@ -23,6 +23,7 @@ class TextController{
         this.textElement.style.top = Config.START_Y + "px";
         this.textElement.style.fontSize = Config.FONT_SIZE + "px";
         this.textElement.style.fontFamily = Config.FONT_FAMILY;
+        this.textElement.style["-webkit-text-stroke"] = Config.STROKE_PX + "px " + Config.STROKE_COLOR;
         this.textElement.style.textStroke = Config.STROKE_PX + "px " + Config.STROKE_COLOR;
 
         this.diffList = [2, 1, 2, 2, 2];
