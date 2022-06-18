@@ -1,8 +1,8 @@
 class Collider{
     static textElement;
     static peopleElement;
-    static w_text;
-    static h_text;
+    static textW;
+    static textH;
 
     static initialize(){
         this.textElement = document.getElementById("text");
@@ -14,26 +14,44 @@ class Collider{
         ctx.font = Config.FONT_SIZE + "px "+ Config.FONT_FAMILY;
         const measure = ctx.measureText("コムドット");
         //幅を取得
-        this.w_text = measure.width;
+        this.textW = measure.width;
         //高さを取得（基準点から上枠までと下枠までの距離の合計）
-        this.h_text = measure.actualBoundingBoxAscent + measure.actualBoundingBoxDescent;
+        this.textH = measure.actualBoundingBoxAscent + measure.actualBoundingBoxDescent;
     }
 
     //テキストと人がぶつかったかどうか。
     //ぶつかったらtrueを返す
     static checkCollision(){
-        //テキストの右端のx座標
-        const x_text = parseInt(this.textElement.style.left) + this.w_text/2;
-        //テキストの下端のy座標
-        const y_text = parseInt(this.textElement.style.top) + this.h_text/2;
-        //人の左端のx座標
-        const x_people = parseInt(this.peopleElement.style.left);
-        //人の上端のy座標
-        const y_people = parseInt(this.peopleElement.style.top);
+        //テキストのコライダーの原点のx座標（テキストの中心）
+        const textColliderOrgX = parseInt(this.textElement.style.left);
+        //テキストのコライダーの原点のy座標（テキストの上）
+        const textColliderOrgY = parseInt(this.textElement.style.top) - this.textH * Config.TEXT_COLLIDER_H_RATIO/2;
+        //テキストのコライダーの幅（右半分）
+        const textColliderW = this.textW * Config.TEXT_COLLIDER_W_RATIO /2;
+        //テキストのコライダーの高さ
+        const textColliderH = this.textH * Config.TEXT_COLLIDER_H_RATIO;
+        //人のコライダーの原点のx座標
+        const peopleColliderOrgX = parseInt(this.peopleElement.style.left);
+        //人のコライダーの原点のy座標
+        const peopleColliderOrgY = parseInt(this.peopleElement.style.top);
+        //人のコライダーの幅
+        const peopleColliderW = this.peopleElement.naturalWidth * Config.PEOPLE_COLLIDER_W_RATIO;
+        //人のコライダーの高さ
+        const peopleColliderH = this.peopleElement.naturalHeight * Config.PEOPLE_COLLIDER_H_RATIO;
 
-        if(x_people <= x_text){
-            if(y_people <= y_text){
-                return true;
+        //矩形AとBの衝突判定（Aがテキスト、Bが人）
+        //Aの左辺のx < Bの右辺のx
+        if(textColliderOrgX < peopleColliderOrgX + peopleColliderW){
+            //Aの右辺のx > Bの左辺のx
+            if(textColliderOrgX + textColliderW > peopleColliderOrgX){
+                //Aの上辺のy < Bの下辺のy
+                if(textColliderOrgY < peopleColliderOrgY + peopleColliderH){
+                    //Aの下辺のy > Bの上辺のy
+                    if(textColliderOrgY + textColliderH > peopleColliderOrgY){
+                        //ぶつかった
+                        return true;
+                    }
+                }
             }
         }
 

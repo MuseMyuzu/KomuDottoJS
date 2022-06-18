@@ -13,13 +13,19 @@ class TextController{
     static ySpeed;
     //似ていないひらがな
     static dissimilarTexts = ["ア", "イ", "ウ", "エ", "オ"];
+    //流れてくる文字がコムドットか否か
+    static isKomudotto;
+    //ラップ数
+    static lap;
+    //テキストが下端にあるか
+    static isBottom;
 
     static initialize(){
         //ランダムなテキストリストを作成
         this.makeRandomText();
         this.textElement = document.getElementById("text");
         this.textElement.style.position = "absolute";
-        this.textElement.style.left = "50%";
+        this.textElement.style.left = Config.START_X + "px";
         this.textElement.style.top = Config.START_Y + "px";
         this.textElement.style.fontSize = Config.FONT_SIZE + "px";
         this.textElement.style.fontFamily = Config.FONT_FAMILY;
@@ -31,6 +37,11 @@ class TextController{
         this.lap = 0;
         this.y = Config.START_Y;
         this.ySpeed = Config.START_YSPEED;
+        this.lap = 0;
+        this.isBottom = false;
+
+        //最初の文字を作成
+        this.createTexts();
     }
 
     //0 - max-1 までの整数の乱数を発生
@@ -82,14 +93,14 @@ class TextController{
     }
 
     static changeTexts(){
-        if(this.sumDiff == 0) return; //もう変える字がない
+        if(this.sumDiff <= 1) return; //もう変える字がない 
 
         //いくつ変化させるか（1～3）
-        //ただし、sumDiffより大きいのはダメ
+        //ただし、sumDiff - 1より大きいのはダメ（最低でも一文字が変化している）
         let change;
         do{
             change = this.getRandomInt(3) + 1;
-        } while(this.sumDiff < change)
+        } while(this.sumDiff - 1 < change)
 
         //change回だけ変化
         for(let i=0; i<change; i++){
@@ -104,29 +115,46 @@ class TextController{
         
     }
 
+    static createTexts(){
+        if(Math.random() > Config.CHANGE_PROB){
+            //コムドットが流れる
+            this.textElement.textContent = "コムドット";
+            this.isKomudotto = true;
+        }
+        else{
+            //文字を変える
+            this.changeTexts();
+            this.textElement.textContent = this.textList.reduce((sum, element) => sum + element, "");
+            this.isKomudotto = false;
+        }
+    }
+
+    static nextPrepare(){
+        //上に戻して周回数を1増やす
+        this.y = Config.START_Y;
+        //ちょっと速くする
+        this.ySpeed += Config.ADD_YSPEED;
+        //次の周の文字を生成
+        this.createTexts();
+        //ラップ数を追加
+        this.lap++;
+
+        this.textElement.style.top = this.y + "px";
+    }
+
     // Update is called once per frame
     static update()
     {
-        //全ての文字が変更できなくなったら終了
-        if(this.sumDiff == 0) return true;
+        //暫定的に下端にはついていないことにする
+        this.isBottom = false;
+        
+        //ラップ数が一定の値を超えたら終了
+        if(this.lap >= Config.LAP_MAX) return true;
 
         //テキストが下端にあるか
         if(this.y > Config.FIELD_Y ) {
-            //上に戻して周回数を1増やす
-            this.y = Config.START_Y;
-            //ちょっと速くする
-            this.ySpeed += 0.5;
-
-            if(Math.random() > Config.CHANGE_PROB){
-                //コムドットが流れる
-                this.textElement.textContent = "コムドット";
-            }
-            else{
-                //文字を変える
-                this.changeTexts();
-                this.textElement.textContent = this.textList.reduce((sum, element) => sum + element, "");
-            }
-            
+            //下端についたことを知らせる
+            this.isBottom = true;
         }
         else{
             //下方向に動かす
