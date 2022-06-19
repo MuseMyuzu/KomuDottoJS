@@ -14,9 +14,9 @@ Config.START_X = Config.FIELD_X * 0.5;
 //文字が出現するy座標
 Config.START_Y = 0;
 //文字のy方向の初速度
-Config.START_YSPEED = 3.0;
+Config.START_YSPEED = 5.0;
 //一周するたびにどれくらい加速するか
-Config.ADD_YSPEED = 1.0;
+Config.ADD_YSPEED = 0.7;
 
 //フォントサイズ
 Config.FONT_SIZE = 80;
@@ -42,10 +42,10 @@ Config.CHANGE_PROB = 0.5;
 Config.INIT_DIFF = 25;
 
 //テキストは何周するか
-Config.LAP_MAX = 15;
+Config.LAP_MAX = 2;
 
 //衝突中の時間（フレーム）
-Config.COLLIDING_TIME_MAX = 60;
+Config.COLLIDING_TIME_MAX = 45;
 
 //テキストのコライダーの幅の割合
 Config.TEXT_COLLIDER_W_RATIO = 0.7;

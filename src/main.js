@@ -7,6 +7,14 @@ window.addEventListener("load", () => {
 class Main{
     static mode;
     static collidingTime;
+    //衝突したときの画像
+    static collisionElement;
+    //コムドットを何回よけたか
+    static dodgeCount;
+    //ループを続けるかのフラグ
+    static loopFlag;
+    //結果に表示する文章
+    static resultText;
 
     //起動時に呼ばれる初期化関数
     static initialize(){
@@ -16,6 +24,12 @@ class Main{
 
         Main.mode = "start";
         Main.collidingTime = 0;
+        Main.dodgeCount = 0;
+        Main.loopFlag = true;
+        Main.resultText = "";
+        
+        //衝突したときの画像
+        Main.collisionElement = document.getElementById("collision");
         
         //ループを開始
         Main.loop();
@@ -39,17 +53,23 @@ class Main{
             case "colliding":
                 //衝突中（少しゲームを止める）
                 Main.collidingTime++;
+                
+                //衝突中の画像を表示
+                Main.collisionElement.style.display = "block";
 
                 if(Main.collidingTime < Config.COLLIDING_TIME_MAX) {
                     break;
                 }else{
+                    //衝突が終わった
+                    Main.collisionElement.style.display = "none";
                     Main.collidingTime = 0;
                 }
 
                 //ゲームオーバーかどうか
                 if(TextController.isKomudotto){
-                    //コムドットが流れてきたとき
-                    Main.mode = "gameover";
+                    //コムドットが流れてきたときゲームオーバー
+                    Main.mode = "finish";
+                    Main.resultText = "コムドットを\nよけられませんでした！";
                     break;
                 }
                 else {
@@ -60,15 +80,22 @@ class Main{
                 break;
             case "moveText":
                 //テキストを動かす
-                const flag = TextController.update();
-                if(flag == true) Main.mode = "clear";
+                if(TextController.update()){
+                    //クリア
+                    Main.resultText = "クリア！すばらしい！";
+                    Main.mode = "finish";
+                    break;
+                } 
 
                 if(TextController.isBottom){
                     if(!TextController.isKomudotto){
-                        //テキストが下端に来るまでよけてしまったら
-                        Main.mode = "gameover";
+                        //テキストが下端に来るまでよけてしまったらゲームオーバー
+                        Main.mode = "finish";
+                        Main.resultText = TextController.textElement.textContent + "を\nよけてしまいました！" ;
                         break;
                     }else{
+                        //コムドットをよけた回数を1増やす
+                        Main.dodgeCount++;
                         //テキストを変更して上に移動
                         TextController.nextPrepare();
                         break;
@@ -89,18 +116,17 @@ class Main{
                 }
                 Main.mode = "collision";
                 break;
-            case "clear": 
+            case "finish": 
                 //クリアの処理
-                Finish.clear();
-                break;
-            case "gameover":
-                //ゲームオーバーの処理
-                Finish.gameOver();
+                Finish.finish(Main.resultText);
+                Main.loopFlag = false;
                 break;
         }
         
-        //1/60秒後にもう一度呼び出す
-        requestAnimationFrame(Main.loop);
+        if(Main.loopFlag){
+            //1/60秒後にもう一度呼び出す
+            requestAnimationFrame(Main.loop);
+        }
     }
 }
 

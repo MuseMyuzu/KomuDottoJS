@@ -11,6 +11,7 @@ class Start{
         startButton.style.borderRadius = "100vh";
         startButton.style.width = "300px";
         startButton.style.fontSize = "48px";
+        startButton.style.border = "none";
 
         //スタートボタンが押されたとき
         startButton.addEventListener("click",

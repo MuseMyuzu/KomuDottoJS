@@ -8,6 +8,17 @@
     width: 600px;
     height: 600px;
     object-fit: cover;
+    z-index: -100;
+}
+#collision{
+    position: absolute;
+    width: 400px;
+    height: auto;
+    left: 300px;
+    top: 300px;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 0;
 }
 #text{
     position: absolute;
@@ -18,6 +29,14 @@
     margin: 0;
     color: white;
     white-space: nowrap;
+}
+#resultDiv{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    margin: 0;
 }
 #buttonDiv{
     position: absolute;
