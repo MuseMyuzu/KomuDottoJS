@@ -22,19 +22,35 @@ Config.ADD_YSPEED = 0.7;
 Config.FONT_SIZE = 80;
 //フォント
 Config.FONT_FAMILY = "Otomanopee One";
-//縁取りの太さ
-Config.STROKE_PX = 5;
-//縁取りの色
-Config.STROKE_COLOR = "#000000";
+//テキストの色
+Config.TEXT_COLOR = "#fff"
+//テキストの影
+Config.TEXT_SHADOW_SETTING = "10px 10px 35px #22222288"
+//縁取り
+Config.STROKE_SETTING = "5px #000";
+
+//結果のフォントサイズ
+Config.RESULT_FONT_SIZE = 56;
+//結果のテキストの色
+Config.RESULT_TEXT_COLOR = "#fff";
+//結果のテキストの影
+Config.RESULT_TEXT_SHADOW_SETTING = "5px 5px 15px #22222299";
+//結果のテキストの縁取り
+Config.RESULT_TEXT_STROKE_SETTING = "3px #000"
 
 //人の画像の幅
 Config.PEOPLE_WIDTH = 150;
+//人の画像の影
+Config.PEOPLE_SHADOW_SETTING = "drop-shadow(10px 10px 15px #22222299)";
 //右側の人のleftの初期値
 Config.LEFT_MIN = Config.FIELD_X*0.5;
 //右側の人のtop
 Config.PEOPLE2_TOP = Config.FIELD_Y*0.5;
 //右側の人のleftの上限
 Config.LEFT_MAX = Config.FIELD_X*0.8;
+
+//ボタンの影
+Config.BUTTON_SHADOW_SETTING = "drop-shadow(10px 10px 10px #222222cc)";
 
 //文字がコムドット以外になる確率
 Config.CHANGE_PROB = 0.5;

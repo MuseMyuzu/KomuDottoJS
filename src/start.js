@@ -12,6 +12,7 @@ class Start{
         startButton.style.width = "300px";
         startButton.style.fontSize = "48px";
         startButton.style.border = "none";
+        startButton.style.setProperty("filter", Config.BUTTON_SHADOW_SETTING);
 
         //スタートボタンが押されたとき
         startButton.addEventListener("click",

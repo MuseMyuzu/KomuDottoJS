@@ -27,10 +27,12 @@ class TextController{
         this.textElement.style.position = "absolute";
         this.textElement.style.left = Config.START_X + "px";
         this.textElement.style.top = Config.START_Y + "px";
+        this.textElement.style.color = Config.TEXT_COLOR;
         this.textElement.style.fontSize = Config.FONT_SIZE + "px";
         this.textElement.style.fontFamily = Config.FONT_FAMILY;
-        this.textElement.style["-webkit-text-stroke"] = Config.STROKE_PX + "px " + Config.STROKE_COLOR;
-        this.textElement.style.textStroke = Config.STROKE_PX + "px " + Config.STROKE_COLOR;
+        this.textElement.style["-webkit-text-stroke"] = Config.STROKE_SETTING;
+        this.textElement.style.textStroke = Config.STROKE_SETTING;
+        this.textElement.style.textShadow = Config.TEXT_SHADOW_SETTING;
 
         this.diffList = [2, 1, 2, 2, 2];
         this.sumDiff = this.diffList.reduce((sum, element) => sum + element, 0);

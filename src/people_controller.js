@@ -13,6 +13,7 @@ class PeopleController{
         this.people1.style.width = Config.PEOPLE_WIDTH + "px";
         this.people1.style.top = Config.PEOPLE2_TOP + "px";
         this.people1.style.left = (Config.FIELD_X - Config.LEFT_MIN) + "px";
+        this.people1.style.setProperty("filter", Config.PEOPLE_SHADOW_SETTING);
         //左に100%動かす（座標の基準が画像の右上になる）
         this.people1.style.transform = "translate(-100%, 0%)"
 
@@ -23,6 +24,7 @@ class PeopleController{
         this.people2.style.width = Config.PEOPLE_WIDTH + "px";
         this.people2.style.top = Config.PEOPLE2_TOP + "px";
         this.people2.style.left = Config.LEFT_MIN + "px";
+        this.people2.style.setProperty("filter", Config.PEOPLE_SHADOW_SETTING);
 
         //画像をdiv要素に入れる
         const div = document.getElementById("peopleDiv");

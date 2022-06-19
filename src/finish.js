@@ -15,11 +15,12 @@ class Finish{
     static showResult(resultText){
         const result = document.createElement("span");
         result.innerHTML = resultText;
-        result.style.color = "#fff";
+        result.style.color = Config.RESULT_TEXT_COLOR;
         result.style.fontFamily = Config.FONT_FAMILY;
-        result.style.fontSize = "56px";
-        result.style["-webkit-text-stroke"] = "3" + "px " + "#000";
-        result.style.textStroke = "3" + "px " + "#000";
+        result.style.fontSize = Config.RESULT_FONT_SIZE + "px";
+        result.style["-webkit-text-stroke"] = Config.RESULT_TEXT_STROKE_SETTING;
+        result.style.textStroke = Config.RESULT_TEXT_STROKE_SETTING;
+        result.style.textShadow = Config.RESULT_TEXT_SHADOW_SETTING
         result.style.whiteSpace = "pre";
 
         const div = document.getElementById("resultDiv");
@@ -31,7 +32,7 @@ class Finish{
         //スタートボタンの作成
         const retryButton = document.createElement("button");
         retryButton.type = "button";
-        retryButton.innerHTML = "もう一度";
+        retryButton.innerHTML = "もういちど";
         retryButton.style.fontFamily = Config.FONT_FAMILY;
         retryButton.style.color = "#fff";
         retryButton.style.background = "#f56500";
@@ -39,6 +40,7 @@ class Finish{
         retryButton.style.width = "300px";
         retryButton.style.fontSize = "48px";
         retryButton.style.border = "none";
+        retryButton.style.setProperty("filter", Config.BUTTON_SHADOW_SETTING);
 
         //ツイートボタンの作成
         const tweetButton = document.createElement("button");
@@ -52,6 +54,7 @@ class Finish{
         tweetButton.style.fontSize = "48px";
         tweetButton.style.marginTop = "20px";
         tweetButton.style.border = "none";
+        tweetButton.style.setProperty("filter", Config.BUTTON_SHADOW_SETTING);
 
         //スタートボタンが押されたとき
         retryButton.addEventListener("click",
