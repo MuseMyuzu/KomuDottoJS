@@ -23,6 +23,8 @@ class Main{
         Start.initialize();
         //音量ボタンを初期化
         Audio.initialize();
+        //ウィンドウのスケール調整
+        Scale.initialize();
 
         Main.mode = "start";
         Main.collidingTime = 0;
@@ -43,11 +45,6 @@ class Main{
         switch(Main.mode){
             case "start": 
                 //スタートの処理
-                break;
-            case "scaling":
-                //ウィンドウ等のスケール調整
-                Scale.scaling();
-                Main.mode = "collision";
                 break;
             case "collision": 
                 //衝突判定。ぶつかったらtrueが返る
@@ -82,7 +79,7 @@ class Main{
                 else {
                     //衝突後は、テキストを上に戻す
                     TextController.nextPrepare();
-                    Main.mode = "scaling";
+                    Main.mode = "collision";
                 }
                 break;
             case "moveText":
@@ -121,7 +118,7 @@ class Main{
                     //タッチしていないとき
                     PeopleController.returnPeople();
                 }
-                Main.mode = "scaling";
+                Main.mode = "collision";
                 break;
             case "finish": 
                 //クリアの処理

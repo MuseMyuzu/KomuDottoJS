@@ -8,18 +8,22 @@ class Config{
 Config.FIELD_Y = 600;
 //フィールド横
 Config.FIELD_X = 600;
+//フィールド縦の最大
+Config.FIELD_Y_MAX = 600;
+//フィールド横の最大
+Config.FIELD_X_MAX = 600;
 
 //文字が出現するx座標
 Config.START_X = Config.FIELD_X * 0.5;
 //文字が出現するy座標
 Config.START_Y = 0;
-//文字のy方向の初速度
-Config.START_YSPEED = 5.0;
-//一周するたびにどれくらい加速するか
-Config.ADD_YSPEED = 0.7;
+//文字のy方向の初速度(5.0)
+Config.START_YSPEED = Config.FIELD_Y / 120;
+//一周するたびにどれくらい加速するか(0.7)
+Config.ADD_YSPEED = Config.START_YSPEED * 0.7 / 5;
 
-//フォントサイズ
-Config.FONT_SIZE = 80;
+//フォントサイズ(80)
+Config.FONT_SIZE = Config.FIELD_X / 7.5;
 //フォント
 Config.FONT_FAMILY = "Otomanopee One";
 //テキストの色
@@ -29,8 +33,8 @@ Config.TEXT_SHADOW_SETTING = "10px 10px 35px #22222288"
 //縁取り
 Config.STROKE_SETTING = "5px #000";
 
-//結果のフォントサイズ
-Config.RESULT_FONT_SIZE = 56;
+//結果のフォントサイズ(64)
+Config.RESULT_FONT_SIZE = Config.FIELD_X / 10;
 //結果のテキストの色
 Config.RESULT_TEXT_COLOR = "#fff";
 //結果のテキストの影
@@ -38,8 +42,8 @@ Config.RESULT_TEXT_SHADOW_SETTING = "5px 5px 15px #22222299";
 //結果のテキストの縁取り
 Config.RESULT_TEXT_STROKE_SETTING = "3px #000"
 
-//人の画像の幅
-Config.PEOPLE_WIDTH = 150;
+//人の画像の幅(150)
+Config.PEOPLE_WIDTH = Config.FIELD_X / 4;
 //人の画像の影
 Config.PEOPLE_SHADOW_SETTING = "drop-shadow(10px 10px 15px #22222299)";
 //右側の人のleftの初期値
