@@ -31,7 +31,7 @@ class Start{
             Collider.initialize();
 
             //衝突チェックからスタート
-            Main.mode = "collision";
+            Main.mode = "scaling";
         })
 
         const div = document.getElementById("buttonDiv");

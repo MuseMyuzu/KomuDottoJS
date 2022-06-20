@@ -3,9 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com;
-    style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-    <title>コムドットゲーム </title>
+    <title>コムドットゲーム</title>
     <script src="src/text_controller.js"></script>
     <script src="src/config.js"></script>
     <script src="src/people_controller.js"></script>
@@ -13,6 +11,8 @@
     <script src="src/collider.js"></script>
     <script src="src/finish.js"></script>
     <script src="src/main.js"></script>
+    <script src="src/audio.js"></script>
+    <script src="src/scale.js"></script>
     <link rel="stylesheet" href="src/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,11 @@
             <div id="resultDiv"></div>
             <div id="buttonDiv"></div>
             <div id="peopleDiv"></div>
+            <img src="img/mute.png" id="soundImg">
+            <!-- BGM -->
+            <audio loop muted id="bgm">
+                <source src="audio/MaouDamashii_8bit29.mp3" type="audio/mp3">
+            </audio>
         </div>
     </body>
 </html>

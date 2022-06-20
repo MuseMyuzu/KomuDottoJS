@@ -49,11 +49,11 @@ class PeopleController{
 
     //スマホかPCかで変更する
     static getEventTypeStart(){
-        return window.ontouchstart ? "touchstart" : "mousedown";
+        return (window.ontouchstart === (null || undefined)) ? "mousedown" : "touchstart";
     }
 
     static getEventTypeEnd(){
-        return window.ontouchstart ? "touchend" : "mouseup";
+        return (window.ontouchstart === (null || undefined)) ? "mouseup" : "touchend";
     }
 
     //タッチしている間、人を動かす
