@@ -1,5 +1,14 @@
 class Start{
     static initialize(){
+        
+        //画像等の調整
+        const container = document.getElementsByClassName("container")[0];
+        container.style.width = Config.FIELD_X + "px";
+        container.style.height = Config.FIELD_Y + "px";
+
+        const road = document.getElementById("road");
+        road.style.width = Config.FIELD_X + "px";
+        road.style.height = Config.FIELD_Y + "px";
 
         //スタートボタンの作成
         const startButton = document.createElement("button");

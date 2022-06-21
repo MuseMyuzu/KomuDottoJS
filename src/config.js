@@ -1,8 +1,19 @@
 
 //設定
 class Config{
+    static initialize(){
+        if(navigator.userAgent.match(/(iPhone|iPod|Android.*Mobile)/i)){
+            //スマホ使用
+        }
+        else{
+            //PC・タブレット使用
+        }
 
+        Config.FIELD_X = 400;
+        Config.FIELD_Y = 640;
+    }
 }
+
 
 //フィールド縦
 Config.FIELD_Y = 600;
@@ -12,6 +23,8 @@ Config.FIELD_X = 600;
 Config.FIELD_Y_MAX = 600;
 //フィールド横の最大
 Config.FIELD_X_MAX = 600;
+
+Config.initialize();
 
 //文字が出現するx座標
 Config.START_X = Config.FIELD_X * 0.5;

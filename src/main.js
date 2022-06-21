@@ -18,8 +18,6 @@ class Main{
 
     //起動時に呼ばれる初期化関数
     static initialize(){
-        //ウィンドウのスケール調整
-        Scale.initialize();
         //スタート画面を初期化
         Start.initialize();
         //音量ボタンを初期化
