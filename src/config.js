@@ -1,30 +1,25 @@
 
 //設定
 class Config{
-    static initialize(){
-        if(navigator.userAgent.match(/(iPhone|iPod|Android.*Mobile)/i)){
-            //スマホ使用
-        }
-        else{
-            //PC・タブレット使用
-        }
 
-        Config.FIELD_X = 400;
-        Config.FIELD_Y = 640;
-    }
 }
 
+//フィールドの縦横
+if(navigator.userAgent.match(/(iPhone|iPod|Android.*Mobile)/i)){
+    //スマホ使用
+    Config.FIELD_X = 270;
+    Config.FIELD_Y = 480;
+}
+else{
+    //PC・タブレット使用
+    Config.FIELD_X = 600;
+    Config.FIELD_Y = 600;
+}
 
-//フィールド縦
-Config.FIELD_Y = 600;
-//フィールド横
-Config.FIELD_X = 600;
 //フィールド縦の最大
 Config.FIELD_Y_MAX = 600;
 //フィールド横の最大
 Config.FIELD_X_MAX = 600;
-
-Config.initialize();
 
 //文字が出現するx座標
 Config.START_X = Config.FIELD_X * 0.5;
@@ -66,8 +61,14 @@ Config.PEOPLE2_TOP = Config.FIELD_Y*0.5;
 //右側の人のleftの上限
 Config.LEFT_MAX = Config.FIELD_X*0.8;
 
+//ボタンの幅
+Config.BUTTON_W = Config.FIELD_X / 2;
+//ボタンのフォント(50)
+Config.BUTTON_FONT_SIZE = Config.FIELD_X / 12;
 //ボタンの影
 Config.BUTTON_SHADOW_SETTING = "drop-shadow(10px 10px 10px #222222cc)";
+//二つのボタンの間の距離(20)
+Config.BUTTON_MARGIN = Config.FIELD_Y / 30;
 
 //文字がコムドット以外になる確率
 Config.CHANGE_PROB = 0.5;

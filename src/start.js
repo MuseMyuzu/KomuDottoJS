@@ -18,8 +18,8 @@ class Start{
         startButton.style.color = "#fff";
         startButton.style.background = "#f56500";
         startButton.style.borderRadius = "100vh";
-        startButton.style.width = Config.FIELD_X /2  + "px";
-        startButton.style.fontSize = "48px";
+        startButton.style.width = Config.BUTTON_W + "px";
+        startButton.style.fontSize = Config.BUTTON_FONT_SIZE + "px";
         startButton.style.border = "none";
         startButton.style.setProperty("filter", Config.BUTTON_SHADOW_SETTING);
 

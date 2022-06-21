@@ -37,8 +37,8 @@ class Finish{
         retryButton.style.color = "#fff";
         retryButton.style.background = "#f56500";
         retryButton.style.borderRadius = "100vh";
-        retryButton.style.width = "300px";
-        retryButton.style.fontSize = "48px";
+        retryButton.style.width = Config.BUTTON_W + "px";
+        retryButton.style.fontSize = Config.BUTTON_FONT_SIZE + "px";
         retryButton.style.border = "none";
         retryButton.style.setProperty("filter", Config.BUTTON_SHADOW_SETTING);
 
@@ -50,9 +50,9 @@ class Finish{
         tweetButton.style.color = "#fff";
         tweetButton.style.background = "#1d9bf0";
         tweetButton.style.borderRadius = "100vh";
-        tweetButton.style.width = "300px";
-        tweetButton.style.fontSize = "48px";
-        tweetButton.style.marginTop = "20px";
+        tweetButton.style.width = Config.BUTTON_W + "px";
+        tweetButton.style.fontSize = Config.BUTTON_FONT_SIZE + "px";
+        tweetButton.style.marginTop = Config.BUTTON_MARGIN + "px";
         tweetButton.style.border = "none";
         tweetButton.style.setProperty("filter", Config.BUTTON_SHADOW_SETTING);
 
