@@ -1,17 +1,13 @@
 
 .container{
-    width: 100vw;
     max-width: 600px;
-    height: 100vh;
     max-height: 600px;
     position: relative;
 }
 #road{
-    width: 100vw;
     max-width: 600px;
-    height: 100vh;
     max-height: 600px;
-    object-fit: cover;
+    object-fit: fill;
     z-index: -100;
     /*タッチできないようにする*/
     user-select: none;

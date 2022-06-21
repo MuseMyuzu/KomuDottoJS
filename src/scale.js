@@ -7,25 +7,26 @@ class Scale{
         this.scaling();
 
         //画像等の調整
-        const container = document.getElementsByClassName("container");
-        container.style.width = Config.FIELD_X;
-        container.style.height = Config.FIELD_Y;
+        const container = document.getElementsByClassName("container")[0];
+        container.style.width = Config.FIELD_X + "px";
+        container.style.height = Config.FIELD_Y + "px";
 
         const road = document.getElementById("road");
-        road.style.width = Config.FIELD_X;
-        road.style.height = Config.FIELD_Y;
+        road.style.width = Config.FIELD_X + "px";
+        road.style.height = Config.FIELD_Y + "px";
+
+        console.log("FIELD X = "+Config.FIELD_X);
     }
 
     static scaling(){
-        const w = document.documentElement.clientWidth;
-        const h = document.documentElement.clientHeight;
+        if(navigator.userAgent.match(/(iPhone|iPod|Android.*Mobile)/i)){
+            //スマホ使用
+        }
+        else{
+            //PC・タブレット使用
+        }
 
-        //ウィンドウが小さくなったら、それに応じて要素を小さくする
-        if(w < Config.FIELD_X_MAX){
-            Config.FIELD_X = w;
-        }
-        if(h < Config.FIELD_Y_MAX){
-            Config.FIELD_Y = h;
-        }
+        Config.FIELD_X = 400;
+        Config.FIELD_Y = 640;
     }
 }
