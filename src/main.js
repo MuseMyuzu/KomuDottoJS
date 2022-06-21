@@ -21,7 +21,7 @@ class Main{
         //スタート画面を初期化
         Start.initialize();
         //音量ボタンを初期化
-        Audio.initialize();
+        AudioController.initialize();
 
         Main.mode = "start";
         Main.collidingTime = 0;
@@ -66,6 +66,7 @@ class Main{
                 //ゲームオーバーかどうか
                 if(TextController.isKomudotto){
                     //コムドットが流れてきたときゲームオーバー
+                    AudioController.playGameOver();
                     Main.mode = "finish";
                     Main.resultText = "コムドットを\nよけられませんでした！";
                     break;
@@ -80,6 +81,7 @@ class Main{
                 //テキストを動かす
                 if(TextController.update()){
                     //クリア
+                    AudioController.playClear();
                     Main.resultText = "クリア！すばらしい！";
                     Main.mode = "finish";
                     break;
@@ -88,6 +90,7 @@ class Main{
                 if(TextController.isBottom){
                     if(!TextController.isKomudotto){
                         //テキストが下端に来るまでよけてしまったらゲームオーバー
+                        AudioController.playGameOver();
                         Main.mode = "finish";
                         Main.resultText = TextController.textElement.textContent + "を\nよけてしまいました！" ;
                         break;

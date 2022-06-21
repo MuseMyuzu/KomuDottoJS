@@ -95,3 +95,6 @@ Config.TEXT_COLLIDER_H_RATIO = 0.7;
 Config.PEOPLE_COLLIDER_W_RATIO = 1.0;
 //人のコライダーの高さの割合
 Config.PEOPLE_COLLIDER_H_RATIO = 0.5;
+
+//決定ボタンの音の長さ
+Config.ENTER_LENGTH = 1000;

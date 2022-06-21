@@ -39,11 +39,27 @@ class Start{
             //コライダーを初期化
             Collider.initialize();
 
+            //BGMを消す
+            AudioController.pauseBGM();
+            //音を鳴らして少し待つ
+            AudioController.playEnter();
+            Start.sleep(Config.ENTER_LENGTH);
+            //ゲームのBGMを鳴らす
+            AudioController.playGameBGM();
+
             //衝突チェックからスタート
             Main.mode = "collision";
         })
 
         const div = document.getElementById("buttonDiv");
         div.appendChild(startButton);
+    }
+
+    // ビジーwaitを使う方法
+    static sleep(waitMsec) {
+        var startMsec = new Date();
+    
+        // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
+        while (new Date() - startMsec < waitMsec);
     }
 }

@@ -54,6 +54,7 @@ class Collider{
                     //Aの下辺のy > Bの上辺のy
                     if(textColliderOrgY + textColliderH > peopleColliderOrgY){
                         //ぶつかった
+                        AudioController.playCollision();
                         return true;
                     }
                 }

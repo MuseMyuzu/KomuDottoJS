@@ -85,6 +85,9 @@ class Finish{
 
     //終了画面を表示
     static finish(resultText){
+        //BGMを消す
+        AudioController.pauseBGM();
+
         this.hideImage();
         this.showResult(resultText);
         this.createButton();
