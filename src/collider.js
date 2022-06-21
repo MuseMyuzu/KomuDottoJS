@@ -3,6 +3,7 @@ class Collider{
     static peopleElement;
     static textW;
     static textH;
+    static collisionElement;
 
     static initialize(){
         this.textElement = document.getElementById("text");
@@ -17,6 +18,10 @@ class Collider{
         this.textW = measure.width;
         //高さを取得（基準点から上枠までと下枠までの距離の合計）
         this.textH = measure.actualBoundingBoxAscent + measure.actualBoundingBoxDescent;
+
+        //衝突したときの画像
+        this.collisionElement = document.getElementById("collision");
+        this.collisionElement.style.width = Config.COLLISION_IMG_W + "px";
     }
 
     //テキストと人がぶつかったかどうか。
@@ -56,5 +61,13 @@ class Collider{
         }
 
         return false;
+    }
+
+    static showCollision(){
+        this.collisionElement.style.display = "block";
+    }
+
+    static hideCollision(){
+        this.collisionElement.style.display = "none";
     }
 }

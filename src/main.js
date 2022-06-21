@@ -29,9 +29,6 @@ class Main{
         Main.loopFlag = true;
         Main.resultText = "";
         
-        //衝突したときの画像
-        Main.collisionElement = document.getElementById("collision");
-        
         //ループを開始
         Main.loop();
     }
@@ -56,13 +53,13 @@ class Main{
                 Main.collidingTime++;
                 
                 //衝突中の画像を表示
-                Main.collisionElement.style.display = "block";
+                Collider.showCollision();
 
                 if(Main.collidingTime < Config.COLLIDING_TIME_MAX) {
                     break;
                 }else{
                     //衝突が終わった
-                    Main.collisionElement.style.display = "none";
+                    Collider.hideCollision();
                     Main.collidingTime = 0;
                 }
 

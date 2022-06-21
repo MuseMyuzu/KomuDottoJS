@@ -16,6 +16,9 @@ else{
     Config.FIELD_Y = 600;
 }
 
+Config.FIELD_X = 270;
+    Config.FIELD_Y = 480;
+
 //フィールド縦の最大
 Config.FIELD_Y_MAX = 600;
 //フィールド横の最大
@@ -38,17 +41,17 @@ Config.FONT_FAMILY = "Otomanopee One";
 Config.TEXT_COLOR = "#fff"
 //テキストの影
 Config.TEXT_SHADOW_SETTING = "10px 10px 35px #22222288"
-//縁取り
-Config.STROKE_SETTING = "5px #000";
+//縁取り(5px)
+Config.STROKE_SETTING = Config.FIELD_X/120 + "px #000";
 
-//結果のフォントサイズ(64)
+//結果のフォントサイズ(60)
 Config.RESULT_FONT_SIZE = Config.FIELD_X / 10;
 //結果のテキストの色
 Config.RESULT_TEXT_COLOR = "#fff";
 //結果のテキストの影
 Config.RESULT_TEXT_SHADOW_SETTING = "5px 5px 15px #22222299";
-//結果のテキストの縁取り
-Config.RESULT_TEXT_STROKE_SETTING = "3px #000"
+//結果のテキストの縁取り(3px)
+Config.RESULT_TEXT_STROKE_SETTING = Config.FIELD_X/200 + "px #000"
 
 //人の画像の幅(150)
 Config.PEOPLE_WIDTH = Config.FIELD_X / 4;
@@ -69,6 +72,9 @@ Config.BUTTON_FONT_SIZE = Config.FIELD_X / 12;
 Config.BUTTON_SHADOW_SETTING = "drop-shadow(10px 10px 10px #222222cc)";
 //二つのボタンの間の距離(20)
 Config.BUTTON_MARGIN = Config.FIELD_Y / 30;
+
+//衝突エフェクトの幅(400)
+Config.COLLISION_IMG_W = Config.FIELD_X * 2 / 3;
 
 //文字がコムドット以外になる確率
 Config.CHANGE_PROB = 0.5;

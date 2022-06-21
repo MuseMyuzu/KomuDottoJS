@@ -18,7 +18,6 @@
 }
 #collision{
     position: absolute;
-    width: 66vw;
     max-width: 400px;
     height: auto;
     left: 50%;
