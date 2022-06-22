@@ -104,8 +104,8 @@ class AudioController{
 
     //人が動いたときの音を鳴らす
     static playMove(){
-        //ゲーム画面でのみ鳴らす
-        if(Main.mode === ("start" || "finish")) return;
+        //ゲーム画面以外では鳴らさない
+        if(Main.mode == "start" || Main.mode == "finish") return;
         if(!this.isMute){
             const se = new Audio("audio/move.mp3");
             se.volume = 1.0;
@@ -115,8 +115,8 @@ class AudioController{
 
     //人を戻すときの音を鳴らす
     static playReturn(){
-        //ゲーム画面でのみ鳴らす
-        if(Main.mode === ("start" || "finish")) return;
+        //ゲーム画面以外では鳴らさない
+        if(Main.mode == "start" || Main.mode == "finish") return;
         if(!this.isMute){
             const se = new Audio("audio/return.mp3");
             se.volume = 1.0;

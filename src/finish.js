@@ -72,10 +72,11 @@ class Finish{
                 +"";
             //クリップボードにコピー
             navigator.clipboard.writeText(tweet)
-                .then(
-                    success => alert("クリップボードにコピーしました。"),
-                    error => alert("クリップボードにコピーできませんでした。")
-                );
+                .then(function(){
+                    alert("クリップボードにコピーしました。");
+                }, function(){
+                    alert("クリップボードにコピーできませんでした。");
+                });
         })
 
         const div = document.getElementById("buttonDiv");

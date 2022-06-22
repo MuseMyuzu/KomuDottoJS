@@ -70,6 +70,12 @@
     left: 0;
     padding: 0;
     margin: 0;
+    /*タッチできないようにする*/
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    /*長押しできないように*/
+    pointer-events: none;
 }
 #soundImg{
     position: absolute;
