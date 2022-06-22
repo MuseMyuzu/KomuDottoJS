@@ -41,25 +41,20 @@ class Start{
 
             //BGMを消す
             AudioController.pauseBGM();
-            //音を鳴らして少し待つ
+            //決定ボタンを鳴らす
             AudioController.playEnter();
-            Start.sleep(Config.ENTER_LENGTH);
-            //ゲームのBGMを鳴らす
-            AudioController.playGameBGM();
 
-            //衝突チェックからスタート
-            Main.mode = "collision";
+            //少し待ったらスタート
+            setTimeout(function(){
+                //ゲームのBGMを鳴らす
+                AudioController.playGameBGM();
+    
+                //衝突チェックからスタート
+                Main.mode = "collision";
+            }, Config.ENTER_LENGTH);
         })
 
         const div = document.getElementById("buttonDiv");
         div.appendChild(startButton);
-    }
-
-    // ビジーwaitを使う方法
-    static sleep(waitMsec) {
-        var startMsec = new Date();
-    
-        // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
-        while (new Date() - startMsec < waitMsec);
     }
 }

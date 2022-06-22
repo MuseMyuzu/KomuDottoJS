@@ -16,9 +16,6 @@ else{
     Config.FIELD_Y = 600;
 }
 
-Config.FIELD_X = 270;
-    Config.FIELD_Y = 480;
-
 //フィールド縦の最大
 Config.FIELD_Y_MAX = 600;
 //フィールド横の最大
@@ -63,6 +60,8 @@ Config.LEFT_MIN = Config.FIELD_X*0.5;
 Config.PEOPLE2_TOP = Config.FIELD_Y*0.5;
 //右側の人のleftの上限
 Config.LEFT_MAX = Config.FIELD_X*0.8;
+//人の画像の速さ(5.0)
+Config.PEOPLE_SPEED = Config.START_YSPEED;
 
 //ボタンの幅
 Config.BUTTON_W = Config.FIELD_X / 2;
@@ -82,7 +81,7 @@ Config.CHANGE_PROB = 0.5;
 Config.INIT_DIFF = 25;
 
 //テキストは何周するか
-Config.LAP_MAX = 2;
+Config.LAP_MAX = 20;
 
 //衝突中の時間（フレーム）
 Config.COLLIDING_TIME_MAX = 45;

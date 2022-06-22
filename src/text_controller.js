@@ -132,6 +132,9 @@ class TextController{
     }
 
     static nextPrepare(){
+        //正解
+        AudioController.playCorrect();
+        
         //上に戻して周回数を1増やす
         this.y = Config.START_Y;
         //ちょっと速くする

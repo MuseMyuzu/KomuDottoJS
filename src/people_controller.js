@@ -37,12 +37,14 @@ class PeopleController{
         //画像をタッチしたらisTouchをtrue
         clikArea.addEventListener(this.getEventTypeStart() , function() {
             console.log("mousedown");
+            AudioController.playMove();
             PeopleController.isTouch = true;
         });
 
         //タッチを辞めたらisTouchをfalse
         clikArea.addEventListener(this.getEventTypeEnd() , function() {
             console.log("mouseup");
+            AudioController.playReturn();
             PeopleController.isTouch = false;
         });
     }
@@ -63,7 +65,7 @@ class PeopleController{
         //右端に着くまで
         if(left < Config.LEFT_MAX){
             //右へ動かす
-            left += 5.0;
+            left += Config.PEOPLE_SPEED;
         }
         else{
             //端まで行ったらMAXの値を代入
@@ -78,7 +80,7 @@ class PeopleController{
     static returnPeople(){
         let left = parseInt(this.people2.style.left);
         if(Config.LEFT_MIN < left){
-            left -= 5.0;
+            left -= Config.PEOPLE_SPEED;
         }
         else{
             left = Config.LEFT_MIN;

@@ -21,7 +21,7 @@ class AudioController{
                 //ミュートの時
                 //ミュートを解除し、音を鳴らす
                 AudioController.bgm.muted = false;
-                AudioController.playTitleBGM();
+                AudioController.playBGM();
                 //画像を変更
                 soundButton.src = "img/unmute.png";
                 AudioController.isMute = false;
@@ -38,16 +38,30 @@ class AudioController{
         })
     }
 
+    //タイトルのBGMを鳴らす
     static playTitleBGM(){
         this.bgm.src = "audio/title_road.mp3";
+        this.bgm.volume = 1.0;
         this.bgm.play();
     }
 
+    //ゲーム中のBGMを鳴らす
     static playGameBGM(){
         this.bgm.src = "audio/MaouDamashiiLoop_8bit29.mp3";
+        this.bgm.volume = 0.5;
         this.bgm.play();
     }
 
+    //適切なBGMを鳴らす
+    static playBGM(){
+        switch(Main.mode){
+            case "start": this.playTitleBGM(); break;
+            case "finish": break;
+            default: this.playGameBGM(); break;
+        }
+    }
+
+    //BGMを止める
     static pauseBGM(){
         this.bgm.pause();
     }
@@ -56,6 +70,7 @@ class AudioController{
     static playEnter(){
         if(!this.isMute){
             const se = new Audio("audio/enter.mp3");
+            se.volume = 1.0;
             se.play();
         }
     }
@@ -64,6 +79,7 @@ class AudioController{
     static playCollision(){
         if(!this.isMute){
             const se = new Audio("audio/collision.mp3");
+            se.volume = 1.0;
             se.play();
         }
     }
@@ -72,6 +88,7 @@ class AudioController{
     static playClear(){
         if(!this.isMute){
             const se = new Audio("audio/success.mp3");
+            se.volume = 1.0;
             se.play();
         }
     }
@@ -80,6 +97,38 @@ class AudioController{
     static playGameOver(){
         if(!this.isMute){
             const se = new Audio("audio/miss.mp3");
+            se.volume = 1.0;
+            se.play();
+        }
+    }
+
+    //人が動いたときの音を鳴らす
+    static playMove(){
+        //ゲーム画面でのみ鳴らす
+        if(Main.mode === ("start" || "finish")) return;
+        if(!this.isMute){
+            const se = new Audio("audio/move.mp3");
+            se.volume = 1.0;
+            se.play();
+        }
+    }
+
+    //人を戻すときの音を鳴らす
+    static playReturn(){
+        //ゲーム画面でのみ鳴らす
+        if(Main.mode === ("start" || "finish")) return;
+        if(!this.isMute){
+            const se = new Audio("audio/return.mp3");
+            se.volume = 1.0;
+            se.play();
+        }
+    }
+
+    //正解の音を鳴らす
+    static playCorrect(){
+        if(!this.isMute){
+            const se = new Audio("audio/correct.mp3");
+            se.volume = 1.0;
             se.play();
         }
     }
