@@ -69,6 +69,7 @@ class Finish{
             const tweet = "コムドット様に" + Main.dodgeCount + "回\n"
                 +"道をお譲りしました。\n" 
                 +"#コムドット\n"
+                +"https://musemyuzu.com/static/komudotto/\n"
                 +"";
             //クリップボードにコピー
             navigator.clipboard.writeText(tweet)
