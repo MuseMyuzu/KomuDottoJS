@@ -75,27 +75,6 @@ class Finish{
             location.reload();
         })
 
-        //ツイートボタンが押されたとき
-        /*
-        tweetButton.addEventListener("click",
-        function(){
-            const tweet = "コムドット様に" + Main.dodgeCount + "回\n"
-                +"道をお譲りしました。\n" 
-                +"#コムドット\n"
-                +"https://musemyuzu.com/static/komudotto/\n"
-                +"";
-                
-            location.replace(tweet);
-            //クリップボードにコピー
-            navigator.clipboard.writeText(tweet)
-                .then(function(){
-                    alert("クリップボードにコピーしました。");
-                }, function(){
-                    alert("クリップボードにコピーできませんでした。");
-                });
-        })
-        */
-
         const div = document.getElementById("buttonDiv");
         div.appendChild(retryButton);
         div.appendChild(tweetButton);
