@@ -43,9 +43,21 @@ class Finish{
         retryButton.style.setProperty("filter", Config.BUTTON_SHADOW_SETTING);
 
         //ツイートボタンの作成
-        const tweetButton = document.createElement("button");
-        tweetButton.type = "button";
+        const tweetButton = document.createElement("a");
         tweetButton.innerHTML = "ツイート";
+        const tweetURL = "https://musemyuzu.com/static/komudotto/";
+        const tweetMessage = "コムドット様に" + Main.dodgeCount + "回%0a"
+                            +"道をお譲りしました。%0a" 
+        const tweetHashTag = "コムドット"
+        const tweet = "https://twitter.com/share?url=" + tweetURL
+                    + "&text=" + tweetMessage
+                    + "&hashtags=" + tweetHashTag;
+        tweetButton.href = tweet;
+        tweetButton.rel = "nofollow"; //リンク先のSEO評価を渡さない
+        tweetButton.target = "_blank"; //別ウィンドウで開く
+        tweetButton.style.display = "block"; //widthなどを反映させる
+        tweetButton.style.textAlign = "center"; //文字の水平中央揃え
+        tweetButton.style.textDecoration = "none"; //下線を消す
         tweetButton.style.fontFamily = Config.FONT_FAMILY;
         tweetButton.style.color = "#fff";
         tweetButton.style.background = "#1d9bf0";
@@ -64,6 +76,7 @@ class Finish{
         })
 
         //ツイートボタンが押されたとき
+        /*
         tweetButton.addEventListener("click",
         function(){
             const tweet = "コムドット様に" + Main.dodgeCount + "回\n"
@@ -71,6 +84,8 @@ class Finish{
                 +"#コムドット\n"
                 +"https://musemyuzu.com/static/komudotto/\n"
                 +"";
+                
+            location.replace(tweet);
             //クリップボードにコピー
             navigator.clipboard.writeText(tweet)
                 .then(function(){
@@ -79,6 +94,7 @@ class Finish{
                     alert("クリップボードにコピーできませんでした。");
                 });
         })
+        */
 
         const div = document.getElementById("buttonDiv");
         div.appendChild(retryButton);
