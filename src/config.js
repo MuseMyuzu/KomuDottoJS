@@ -9,17 +9,22 @@ if(navigator.userAgent.match(/(iPhone|iPod|Android.*Mobile)/i)){
     //スマホ使用
     Config.FIELD_X = 270;
     Config.FIELD_Y = 480;
+    //フィールド縦の最大
+    Config.FIELD_Y_MAX = 270;
+    //フィールド横の最大
+    Config.FIELD_X_MAX = 480;
 }
 else{
     //PC・タブレット使用
     Config.FIELD_X = 600;
     Config.FIELD_Y = 600;
+    //フィールド縦の最大
+    Config.FIELD_Y_MAX = 600;
+    //フィールド横の最大
+    Config.FIELD_X_MAX = 600;
 }
 
-//フィールド縦の最大
-Config.FIELD_Y_MAX = 600;
-//フィールド横の最大
-Config.FIELD_X_MAX = 600;
+
 
 //文字が出現するx座標
 Config.START_X = Config.FIELD_X * 0.5;

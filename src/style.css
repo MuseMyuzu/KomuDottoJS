@@ -25,6 +25,12 @@
     transform: translate(-50%, -50%);
     display: none;
     z-index: 0;
+    /*タッチできないようにする*/
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    /*長押しできないように*/
+    pointer-events: none;
 }
 #text{
     position: absolute;
